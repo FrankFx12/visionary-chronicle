@@ -1,0 +1,279 @@
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  transition: background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              backdrop-filter var(--dur) var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+/* When user scrolls, fade in a glass background. */
+.navbar--scrolled {
+  background: var(--glass-bg);
+  border-bottom-color: var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.navbar__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+}
+
+/* ---------- Logo ---------- */
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.navbar__logo-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-glow);
+  flex-shrink: 0;
+}
+
+.navbar__logo-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar__demo-badge {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: var(--r-full);
+  color: var(--accent-2);
+  background: rgba(0, 224, 255, 0.10);
+  border: 1px solid rgba(0, 224, 255, 0.28);
+  flex-shrink: 0;
+}
+
+/* ---------- Desktop links ---------- */
+
+.navbar__links {
+  display: none;            /* hidden on mobile, shown at wider widths */
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.navbar__link {
+  position: relative;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-2);
+  padding: var(--sp-2) 0;
+  transition: color var(--dur) var(--ease);
+}
+
+.navbar__link:hover,
+.navbar__link:focus-visible {
+  color: var(--text-1);
+}
+
+/* Underline that grows on hover */
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: var(--r-full);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Actions (theme + hamburger) ---------- */
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+}
+
+.navbar__theme-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  color: var(--text-1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              transform var(--dur-fast) var(--ease);
+  flex-shrink: 0;
+}
+
+.navbar__theme-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.navbar__theme-btn:active {
+  transform: translateY(0);
+}
+
+/* ---------- Hamburger (mobile only) ---------- */
+
+.navbar__hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+
+.navbar__hamburger:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  border-radius: var(--r-full);
+  background: var(--text-1);
+  transition: transform var(--dur) var(--ease),
+              opacity var(--dur) var(--ease);
+}
+
+/* Turn the three lines into an X when open */
+.navbar__hamburger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar__hamburger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile dropdown ---------- */
+
+.navbar__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-5);
+  max-height: 0;
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid transparent;
+  transition: max-height var(--dur-slow) var(--ease),
+              padding var(--dur-slow) var(--ease),
+              border-color var(--dur-slow) var(--ease);
+}
+
+.navbar__mobile.is-open {
+  max-height: 70vh;
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+  border-bottom-color: var(--glass-border);
+}
+
+.navbar__mobile-link {
+  padding: var(--sp-3) var(--sp-2);
+  border-radius: var(--r-md);
+  color: var(--text-2);
+  font-weight: 500;
+  transition: color var(--dur) var(--ease),
+              background var(--dur) var(--ease);
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link:focus-visible {
+  color: var(--text-1);
+  background: var(--surface);
+}
+
+/* ---------- Responsive: show desktop layout at 900px+ ---------- */
+
+@media (min-width: 900px) {
+  .navbar__links {
+    display: flex;
+  }
+  .navbar__hamburger {
+    display: none;
+  }
+  .navbar__mobile {
+    display: none;
+  }
+}
+
+/* ---------- Tiny screens (≤ 420px): shrink + prevent overflow ---------- */
+
+@media (max-width: 420px) {
+  .navbar__logo {
+    gap: var(--sp-2);
+    font-size: var(--fs-base);
+  }
+
+  .navbar__demo-badge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .navbar__logo-mark {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .navbar__theme-btn,
+  .navbar__hamburger {
+    width: 36px;
+    height: 36px;
+  }
+}

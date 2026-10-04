@@ -1,0 +1,313 @@
+/* =========================================================
+   PLAN DETAILS PAGE
+   ========================================================= */
+
+.plan-details {
+  padding-bottom: var(--sp-8);
+}
+
+/* ---------- Hero band ---------- */
+
+.plan-details__hero {
+  padding: var(--sp-7) 0 var(--sp-6);
+  text-align: center;
+  position: relative;
+}
+
+.plan-details__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-3);
+  margin-bottom: var(--sp-5);
+  transition: color var(--dur) var(--ease);
+}
+
+.plan-details__back:hover {
+  color: var(--accent-2);
+}
+
+.plan-details__eyebrow {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: var(--sp-3);
+}
+
+.plan-details__title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--sp-3);
+}
+
+.plan-details__tagline {
+  font-size: var(--fs-lg);
+  color: var(--text-2);
+  max-width: 620px;
+  margin-inline: auto;
+  margin-bottom: var(--sp-5);
+}
+
+.plan-details__price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: var(--sp-4) var(--sp-6);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.plan-details__currency {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.plan-details__amount {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.plan-details__period {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-left: var(--sp-2);
+}
+
+/* ---------- Body grid ---------- */
+
+.plan-details__body {
+  padding: var(--sp-6) 0;
+}
+
+.plan-details__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .plan-details__grid {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--sp-6);
+  }
+}
+
+/* ---------- Left: Benefits panel ---------- */
+
+.plan-details__panel {
+  padding: var(--sp-6);
+}
+
+.plan-details__panel-title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  margin-bottom: var(--sp-5);
+  letter-spacing: -0.01em;
+}
+
+.plan-details__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.plan-details__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-size: var(--fs-base);
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+.plan-details__check {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  background: rgba(0, 224, 255, 0.12);
+  border: 1px solid rgba(0, 224, 255, 0.32);
+}
+
+/* ---------- Right: Info + CTA ---------- */
+
+.plan-details__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  position: sticky;
+  top: calc(var(--nav-h) + var(--sp-5));
+}
+
+.plan-details__info {
+  padding: var(--sp-5);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.plan-details__info-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: var(--sp-4);
+}
+
+.plan-details__dl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.plan-details__dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.plan-details__dl > div:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.plan-details__dl dt {
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+}
+
+.plan-details__dl dd {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-1);
+  text-transform: capitalize;
+}
+
+.plan-details__cta {
+  width: 100%;
+}
+
+/* ---------- Disclaimer ---------- */
+
+.plan-details__disclaimer {
+  margin-top: var(--sp-7);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-2);
+  background: rgba(0, 224, 255, 0.04);
+  font-size: var(--fs-sm);
+  color: var(--text-3);
+  line-height: 1.65;
+}
+
+.plan-details__disclaimer strong {
+  color: var(--text-2);
+  font-weight: 600;
+}
+
+/* ---------- Other plans ---------- */
+
+.plan-details__others {
+  padding: var(--sp-7) 0 var(--sp-5);
+}
+
+.plan-details__others-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: var(--sp-4);
+}
+
+.plan-details__others-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--sp-3);
+}
+
+.plan-details__other-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform var(--dur) var(--ease),
+              background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+
+.plan-details__other-card:hover {
+  transform: translateY(-2px);
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+.plan-details__other-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.plan-details__other-price {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 520px) {
+  .plan-details__hero {
+    padding: var(--sp-5) 0 var(--sp-4);
+  }
+  .plan-details__price {
+    padding: var(--sp-3) var(--sp-5);
+  }
+  .plan-details__panel {
+    padding: var(--sp-5) var(--sp-4);
+  }
+  .plan-details__disclaimer {
+    padding: var(--sp-3) var(--sp-4);
+    font-size: var(--fs-xs);
+  }
+}
